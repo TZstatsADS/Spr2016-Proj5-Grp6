@@ -4,13 +4,14 @@ author: "Nicole LaPointe Jameson"
 date: "April 18, 2016"
 output: html_document
 ---
-#Baseline Cipher Solving 
+  #Baseline Cipher Solving 
+  
+  ##Comparison Text
+  Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
 
-##Comparison Text
-Right now, it is the book, `War and Peace`, but maybe dictionary will be better?
 ```{r}
 #Input a baseline text fille to decode
-reference <- readLines("C:\\Users\\NMLJ\\Documents\\GitHub\\FinalProject-p5-team6\\data\\warandpeace.txt")
+reference <- readLines("C:\\Users\\NMLJ\\Documents\\GitHub\\finalfroject-p5-team6\\data\\warandpeace.txt")
 
 #Translate Characters into character vectors
 reference <- toupper(reference) 
@@ -34,9 +35,9 @@ for (ln in 1:length(reference)) {
     curletter<- substring(reference[ln],pos,pos)
     if (curletter %in% toupper(letters)) {
       prob.mat[rownames(prob.mat)==lastletter,
-                colnames(prob.mat)==curletter]=
+               colnames(prob.mat)==curletter]=
         prob.mat[rownames(prob.mat)==lastletter,
-                  colnames(prob.mat)==curletter]+1
+                 colnames(prob.mat)==curletter]+1
       lastletter=curletter
     } else {
       if (lastletter!="") {
@@ -85,7 +86,7 @@ log.prob <- function(mapping,decoded) {
     curletter=substring(decoded,i,i)
     if (curletter %in% toupper(letters)) {
       logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,
-                                         colnames(prob.mat)==curletter])
+                                             colnames(prob.mat)==curletter])
       lastletter=curletter
     } else {
       if (lastletter!="") {
@@ -170,6 +171,3 @@ max.decode
 #
 
 ```
-
-
-
