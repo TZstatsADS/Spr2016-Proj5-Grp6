@@ -1,0 +1,173 @@
+---
+title: "Intro to Cipher"
+author: "Nicole LaPointe Jameson"
+date: "April 18, 2016"
+output: html_document
+---
+  #Baseline Cipher Solving 
+  
+  ##Comparison Text
+  Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
+
+```{r}
+#Input a baseline text fille to decode
+reference <- readLines("C:\\Users\\NMLJ\\Documents\\GitHub\\finalfroject-p5-team6\\data\\warandpeace.txt")
+
+#Translate Characters into character vectors
+reference <- toupper(reference) 
+
+```
+
+##Probability Matrix
+This produces 27 by 27 matrix (for all letters and special characters) of  the number of times  **2** letters following eachother.
+*Current problem: Single-letter and double-letter words are not very accurate so far (IE: A, I, So, To)
+
+```{r}
+#Create the Matrix
+prob.mat <- matrix(0,27,27)
+rownames(prob.mat)=colnames(prob.mat)=c(toupper(letters),"")
+lastletter=""
+
+#The Loop to compute Log-likelihood probability
+for (ln in 1:length(reference)) {
+  if (ln %% 1000 ==0) {cat("Line",ln,"\n")}
+  for (pos in 1:nchar(reference[ln])) {
+    curletter<- substring(reference[ln],pos,pos)
+    if (curletter %in% toupper(letters)) {
+      prob.mat[rownames(prob.mat)==lastletter,
+               colnames(prob.mat)==curletter]=
+        prob.mat[rownames(prob.mat)==lastletter,
+                 colnames(prob.mat)==curletter]+1
+      lastletter=curletter
+    } else {
+      if (lastletter!="") {
+        prob.mat[rownames(prob.mat)==lastletter,27]=
+          prob.mat[rownames(prob.mat)==lastletter,27]+1
+        lastletter=""
+      }
+    }
+  }
+  curletter=""
+  if (lastletter!="") {
+    prob.mat[rownames(prob.mat)==lastletter,27]=
+      prob.mat[rownames(prob.mat)==lastletter,27]+1
+  }
+  lastletter=""
+}
+
+probability.matrix <- sweep(prob.mat+1,1,rowSums(prob.mat+1),FUN="/")
+
+```
+
+##Decoding Methods
+This function decode() decodes the text based on the text mapping position (So based on count of how many times letters followed eachother)
+```{r}
+decode <- function(mapping,coded) {
+  coded=toupper(coded)
+  decoded=coded
+  for (i in 1:nchar(coded)) {
+    if (substring(coded,i,i) %in% toupper(letters)) {
+      substring(decoded,i,i)=toupper(letters[mapping==substring(coded,i,i)])
+    }
+  }
+  decoded
+}
+
+```
+
+##Log-Likelihood Function
+This function decodes based on log-likelihood of letters following eachother
+```{r}
+log.prob <- function(mapping,decoded) {
+  logprob=0
+  
+  lastletter=""
+  for (i in 1:nchar(decoded)) {
+    curletter=substring(decoded,i,i)
+    if (curletter %in% toupper(letters)) {
+      logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,
+                                             colnames(prob.mat)==curletter])
+      lastletter=curletter
+    } else {
+      if (lastletter!="") {
+        logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+        lastletter=""
+      }
+    }
+  }
+  
+  if (lastletter!="") {
+    logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+    lastletter=""
+  }
+  logprob
+}
+
+
+```
+
+#Baseline Function
+##Scrambling Methods
+```{r}
+#SRS of letters scramble
+##Correct text (Input as character spring)
+correctTxt <- "Hello Project Five Team Six! I Hope this code works."
+
+
+coded <- decode(sample(toupper(letters)),correctTxt) # randomly scramble the text
+coded
+```
+
+##Decoding Execution: Baseline Mapping Text (Run this to get decoded options)
+```{r}
+mapping <- sample(toupper(letters)) # initialize a random mapping
+i=2 #Can change these values
+iters=1000 #Can change these vales
+cur.decode <- decode(mapping,coded)
+cur.loglike <- log.prob(mapping,cur.decode)
+max.loglike <- cur.loglike
+max.decode <- cur.decode
+
+while (i<=iters) {
+  proposal <- sample(1:26,2) # select 2 letters to switch
+  prop.mapping=mapping
+  prop.mapping[proposal[1]]=mapping[proposal[2]]
+  prop.mapping[proposal[2]]=mapping[proposal[1]]
+  
+  prop.decode=decode(prop.mapping,coded)
+  prop.loglike=log.prob(prop.mapping,prop.decode)
+  
+  if (runif(1)<exp(prop.loglike-cur.loglike)) {
+    mapping=prop.mapping
+    cur.decode=prop.decode
+    cur.loglike=prop.loglike
+    
+    if (cur.loglike>max.loglike) {
+      max.loglike=cur.loglike
+      max.decode=cur.decode
+    }
+    
+    cat(i,cur.decode,"\n")
+    i=i+1
+  }
+}
+
+```
+
+#Output Options
+```{r}
+#Regular Decode
+cur.decode
+
+#Log Likelihood 
+cur.loglike
+
+#Max Log Likelihood
+max.loglike
+
+#Max LL of Decode
+max.decode
+
+#
+
+```
