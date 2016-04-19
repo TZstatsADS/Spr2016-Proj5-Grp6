@@ -1,6 +1,5 @@
-#Project 5: Insert Title
+# Project: Cats vs Dogs
+### Code lib Folder
 
-INSERT INSERT INSERT
-
-
+The lib directory contains various files with function definitions (but only function definitions - no code that actually runs).
 
