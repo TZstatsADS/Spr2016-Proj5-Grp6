@@ -1,6 +1,6 @@
 #Project 5: Cipher Solving and Decoding Secret Messages!
 
-##Absract
+##Abstract
 Cryptography, or the writing and solving of written codes, has a wide amount of uses, ranging from harmless entertainment, to invaluably important encrpytion and decrption of messages. It can be used to pass notes among friends, to even be used in information and data protection in modern electronic security technologies. What many do not realize though is that cryptography, and linguistsics, finds its foundations in probability; the english language structure can be modeled probabilistically! 
 
 Group 6 set out to solve ciphers, to encoded cryptograms from a new, statistical and data mining perspective, and present a fun way to exhibit our work in an interactive shiny app.
