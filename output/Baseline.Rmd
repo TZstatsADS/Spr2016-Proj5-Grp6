@@ -1,0 +1,17 @@
+---
+title: "Baseline"
+author: "Yanyu Zheng yz2690"
+date: "April 20, 2016"
+output: html_document
+---
+
+```{r}
+setwd("/Users/yutou/Data Science/finalproject-p5-team6/data")
+source("../lib/enc.R")
+library("dplyr")
+library("tm")
+input = "Vote for group six"
+enc(input,9)
+
+```
+
