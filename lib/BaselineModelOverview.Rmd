@@ -4,7 +4,7 @@ author: "Nicole LaPointe Jameson"
 date: "April 18, 2016"
 output: html_document
 ---
-  #Baseline Cipher Solving 
+#Baseline Cipher Solving 
   
   ##Comparison Text
   Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
@@ -113,7 +113,8 @@ log.prob <- function(mapping,decoded) {
 ##Correct text (Input as character spring)
 correctTxt <- "Hello Project Five Team Six! I Hope this code works."
 
-
+#WANT TO CHANGE THIS METHOD 
+#Use Simple Sub and Permutation Method to improve accuracy
 coded <- decode(sample(toupper(letters)),correctTxt) # randomly scramble the text
 coded
 ```
