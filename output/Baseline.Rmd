@@ -6,12 +6,20 @@ output: html_document
 ---
 
 ```{r}
+setwd("/Users/yutou/Data Science/words")
+temp = list.files(pattern="*.csv")
+myfiles = lapply(temp, read.delim)
+dic = do.call(c,myfiles)
+dic = lapply(dic,levels)
+rm(myfiles)
 setwd("/Users/yutou/Data Science/finalproject-p5-team6/data")
 source("../lib/enc.R")
+source("../lib/dec.R")
 library("dplyr")
 library("tm")
-input = "Vote for group six"
-enc(input,9)
+input = "I will do whatever it takes to get you"
 
+code = enc(input,10)
+dec(code)
 ```
 

@@ -1,4 +1,4 @@
-source("../lib/stringToWord")
+source("../lib/stringToWord.R")
 toNumber = function(string){
   words = stringToWord(string)
   num = lapply(words,charToRaw) %>%
