@@ -38,7 +38,27 @@ shinyUI( fluidPage(
                ),
              
     
-            
+    tabPanel("Ngram",icon = icon("apple"),
+             sidebarPanel(
+                 
+                 textInput("firststring", label = h6("Text input"), 
+                           value = "a bad dream"),
+                 numericInput("textlength", label = h6("Text input"), 
+                           value = 20),
+                 numericInput("ng", label = h6("Text input"), 
+                           value = 4)
+                 ),
+             mainPanel(
+                 textOutput("TextFinal"
+                 )
+                 #tabsetPanel(type = "tabs", 
+                 #           tabPanel("Plot", plotOutput("plot")), 
+                 #            tabPanel("Summary", verbatimTextOutput("summary")), 
+                 #             tabPanel("Table", tableOutput("table"))
+             )
+             
+    ),
+    
     
     tabPanel("Info",icon=icon("facebook"),
              

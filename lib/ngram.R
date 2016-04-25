@@ -1,4 +1,4 @@
-setwd("F:/CU Textbooks And Related Stuff/STAT W4249/Project5")
+#setwd("F:/CU Textbooks And Related Stuff/STAT W4249/Project5")
 library(tm)
 library(RWeka)
 library(dplyr)
@@ -8,16 +8,16 @@ dat<-dat[dat!=""]
 #View(as.matrix(dat))
 
 source("GenerateTDM.R")
-ng<-4
+ng<-5
 tdm <- tdm.generate(dat, ng)
 tdm.matrix <- as.matrix(tdm)
 
-topwords <- rowSums(tdm.matrix)
-topwords <- as.numeric(topwords)
-hist(topwords, breaks = 100)
-findFreqTerms(tdm, lowfreq = 50)
-findFreqTerms(tdm, lowfreq = 100)
-head(sort(topwords, decreasing = TRUE))
+# topwords <- rowSums(tdm.matrix)
+# topwords <- as.numeric(topwords)
+# hist(topwords, breaks = 100)
+# findFreqTerms(tdm, lowfreq = 50)
+# findFreqTerms(tdm, lowfreq = 100)
+# head(sort(topwords, decreasing = TRUE))
 
 newmatrix<-matrix(0,nrow=nrow(tdm.matrix),ncol=2)
 for(i in 1:nrow(tdm.matrix)){
@@ -65,6 +65,4 @@ GetTheWholeText<-function(firststring,textlength,newmatrix,ng){
     }
     return(TheWholeText)
 }
-firststring<-"the little prince"
-textlength<-20
-TextFinal<-GetTheWholeText(firststring,textlength,newmatrix,ng)
+
