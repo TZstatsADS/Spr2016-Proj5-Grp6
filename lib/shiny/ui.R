@@ -31,12 +31,11 @@ shinyUI( fluidPage(
              submitButton("Submit")
              ),
              
-<<<<<<< HEAD:lib/shiny/ui.R
              mainPanel(verbatimTextOutput("text1"),
                        verbatimTextOutput("text2")
                )
     ),
-=======
+
     
     tabPanel("Ngram",icon = icon("apple"),
              sidebarPanel(
@@ -59,7 +58,6 @@ shinyUI( fluidPage(
              
     ),
     
->>>>>>> origin/master:lib/ui.R
     
     tabPanel("Info",icon=icon("facebook"),
              tabItem(tabName = "about",

@@ -17,7 +17,7 @@ shinyServer(function(input, output,session) {
   source("inD.R")
   library("dplyr")
   library("tm")
-
+  
   
   en = enc(input$text,input$num)
   de = dec(code)
