@@ -87,12 +87,13 @@ police to tell them about his findings. Once the detective opened the phone to d
     tabPanel("Ngram",icon = icon("apple"),
              sidebarPanel(
                  
-                 textInput("firststring", label = h6("Text input"), 
-                           value = "a bad dream"),
+                 textInput("firststring", label = h6("Text input") ,
+                           value="the little prince"),
                  numericInput("textlength", label = h6("Text input"), 
-                           value = 20),
-                 numericInput("ng", label = h6("Text input"), 
-                           value = 4)
+                           value="30"),
+                 numericInput("ng", label = h6("Text input"),
+                          value="4"),
+                 submitButton("Submit")
                  ),
              mainPanel(
                  textOutput("TextFinal"

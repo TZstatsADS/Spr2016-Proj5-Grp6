@@ -10,6 +10,7 @@ rm(myfiles)
 
 #Codes for Mapping
 load("prob.RData")
+load("prob_mat.RData")
 
 #shinyserver
 shinyServer(function(input, output,session) {
@@ -27,8 +28,6 @@ shinyServer(function(input, output,session) {
   
   #Output for shifting############################################################
     output$TextFinal<-renderText({
-        firststring<-"the little prince"
-        textlength<-20
         GetTheWholeText(input$firststring,input$textlength,newmatrix,input$ng)
     })
     
@@ -79,19 +78,19 @@ shinyServer(function(input, output,session) {
     for (i in 1:nchar(decoded)) {
       curletter=substring(decoded,i,i)
       if (curletter %in% toupper(letters)) {
-        logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,
-                                               colnames(prob.mat)==curletter])
+        logprob=logprob+log(prob[rownames(prob_mat)==lastlet_ter,
+                                               colnames(probmat)==curletter])
         lastletter=curletter
       } else {
         if (lastletter!="") {
-          logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+          logprob=logprob+log(prob[rownames(prob_mat)==lastletter,27])
           lastletter=""
         }
       }
     }
     
     if (lastletter!="") {
-      logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+      logprob=logprob+log(prob[rownames(prob_mat)==lastletter,27])
       lastletter=""
     }
     logprob
