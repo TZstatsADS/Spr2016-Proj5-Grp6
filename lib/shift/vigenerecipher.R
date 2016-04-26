@@ -12,7 +12,7 @@ key = rep(str2ints(key), len = length(input)) - 1
 paste(collapse = "", LETTERS[
   mod1(input + (if (decrypt) -1 else 1)*key, length(LETTERS))])}
 
-message(vigen("Beware the Jabberwock, my son! The jaws that bite, the claws that catch!", "elephant"))
+#message(vigen("Beware the Jabberwock, my son! The jaws that bite, the claws that catch!", "elephant"))
 # WMCEEIKLGRPIFVMEUGXQPWQVIOIAVEYXUEKFKBTALVXTGAFXYEVKPAGY
-message(vigen("FPAPYEGAIUEQIEEPSNOBFSBGXSIYHWFMLLXQPTRMLPGAHWFMLLXRHTPA", "elephant", decrypt = T))
+#message(vigen("FPAPYEGAIUEQIEEPSNOBFSBGXSIYHWFMLLXQPTRMLPGAHWFMLLXRHTPA", "elephant", decrypt = T))
 # BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH

@@ -20,6 +20,7 @@ shinyServer(function(input, output,session) {
   source("toSentence.R")
   source("stringToWord.R")
   source("inD.R")
+  source("vigenerecipher.R")
   library("dplyr")
   library("tm")
   
@@ -215,5 +216,24 @@ shinyServer(function(input, output,session) {
     paste("Your decoded message is: ", max.decode)
   })
 
-
+  ########code for vigenere cipher#############
+  output$text8<-renderText({
+    vn <- vigen(input$text2,input$text3)
+    paste("Your encrypted message is: ", vn)
+    
+  })
+  output$text9<-renderText({
+    vnn <- vigen(input$text2,input$text3)
+    vd <- vigen(vnn, input$text3, decrypt = T)
+    paste("Your decrypted message is: ", vd)
+  })
+  
+  ########code for permutation###########
+  output$matrix<-renderTable({
+    matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+  })
+  output$text10<-renderText({
+    m<-matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+    paste(m, collapse = "") 
+  })
 })
