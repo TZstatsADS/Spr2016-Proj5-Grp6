@@ -13,7 +13,7 @@ dec = function(stringB){
     s[i]=score
   }
   key = which.max(s)
-  #print(paste("The key is shifting",(26-key),sep=" "))
+  print(paste("The key is shifting",(26-key),sep=" "))
   out = enc(stringB,key)
   return(out)
 }

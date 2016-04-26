@@ -4,11 +4,24 @@ library(shinydashboard)
 shinyUI( fluidPage(
   navbarPage(
     "Team 8 Project 5",
-    tabPanel("What is Crypotography?",icon = icon("unlock"),
-             helpText("Cryptography is a method of storing and 
-                      transmitting data in a particular form so 
-                      that only those for whom it is intended can
-                      read and process it. ")),
+    tabPanel("Crypotography",icon = icon("unlock"),
+             box(width = 6,
+                 img(src="murder.jpg", width = 400) ),
+             box(width = 6,
+                 helpText("There was a death on Treebark Ln. The victim was identified 
+as Mark Oswalt, who recently was married. The police went to the crime scene and they 
+reported the death as a suicide. Later that day, after the police left, a private detective, 
+hired by the victim's friend who thought it was a murder, searched the crime scene and 
+found a note the police missed. It read: "),
+                 helpText("4,3: 8,1:_: 9,1: 2,1: 7,4:_: 6,1:9,3:_: 9,1: 4,3: 3,3: 3,2: !"),
+                 helpText("The detective took out his cell phone and started dialing the
+police to tell them about his findings. Once the detective opened the phone to dial, he 
+                          immediately screamed out, 'I SOLVED IT!'"),
+                 br(),
+                 helpText("Who was the murderer and how did the detective find out?")
+                        
+                 )
+            ),
     
     
     tabPanel("Exploratory Analysis",icon=icon("line-chart"),
@@ -20,12 +33,8 @@ shinyUI( fluidPage(
                            )
              ),
     
-    tabPanel("App",icon = icon("apple"),
+    tabPanel("Shifting",icon = icon("apple"),
              sidebarPanel(
-               radioButtons("method", "Select the Method",
-                            c("Method 1" = "one",
-                              "Method 2" = "two")),
-               
                textInput("text", "Text:", "I love cryptography."),
              numericInput("num", "Numeric input",  value = 1,min = 1, max = 25),
              submitButton("Submit")
@@ -61,8 +70,13 @@ shinyUI( fluidPage(
     
     tabPanel("Info",icon=icon("facebook"),
              tabItem(tabName = "about",
-                              box(width = 12,h3(icon("group"),"Team Members"))
-                   #title = "Team Members", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
+                              box(width = 12,h3(icon("group"),"Team Members"),
+                                  br(),
+                                  h5("Nicole Marie Lapointe Jameson: nml2145@columbia.edu"),
+                                  h5("Yanran Wang: yw2758@columbia.edu"),
+                                  h5("Zehao Wang: zw2323@columbia.edu"),
+                                  h5("Yanyu Zheng: yz2690@columbia.edu"),
+                                  h5("Jadie Zuo: xz2467@columbia.edu"))
                    
                )
                )
