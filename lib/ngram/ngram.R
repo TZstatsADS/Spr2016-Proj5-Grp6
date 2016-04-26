@@ -3,6 +3,7 @@ library(tm)
 library(RWeka)
 library(dplyr)
 dat <- read.delim("F:/CU Textbooks And Related Stuff/STAT W4249/Project5/TheLittlePrince.txt", header=FALSE,stringsAsFactors=FALSE)
+dat <- read.delim("TheLittlePrince.txt", header=FALSE,stringsAsFactors=FALSE)
 dat <- dat[,2]
 dat<-dat[dat!=""]
 #View(as.matrix(dat))

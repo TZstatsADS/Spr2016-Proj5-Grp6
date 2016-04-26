@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r}
-setwd("/Users/yutou/Data Science/finalproject-p5-team6/data/words")
+setwd("~/Documents/finalproject-p5-team6/data/words")
 temp = list.files(pattern="*.csv")
 myfiles = lapply(temp, read.delim)
 dic = do.call(c,myfiles)
@@ -20,7 +20,7 @@ source("../lib/toSentence.R")
 source("../lib/inD.R")
 library("dplyr")
 library("tm")
-input = "Columbia University was founded as King's College by royal charter of King George II of England. It is the oldest institution of higher learning in the state of New York and the fifth oldest in the United States. Controversy preceded the founding of the College, with various groups competing to determine its location and religious affiliation. Advocates of New York City met with success on the first point, while the Anglicans prevailed on the latter. However, all constituencies agreed to commit themselves to principles of religious liberty in establishing the policies of the College."
+input = "Columbia University was."
 
 code = enc(input,10)
 dec(code)

@@ -25,28 +25,20 @@ shinyUI( fluidPage(
                radioButtons("method", "Select the Method",
                             c("Method 1" = "one",
                               "Method 2" = "two")),
-               br(),
                
-               textInput("text", label = h6("Text input"), 
-                         value = "Enter text..."))   
+               textInput("text", "Text:", "I love cryptography."),
+             numericInput("num", "Numeric input",  value = 1,min = 1, max = 25),
+             submitButton("Submit")
              ),
-             mainPanel(
-               #tabsetPanel(type = "tabs", 
-               #           tabPanel("Plot", plotOutput("plot")), 
-               #            tabPanel("Summary", verbatimTextOutput("summary")), 
-               #             tabPanel("Table", tableOutput("table"))
-               ),
              
-    
-            
+             mainPanel(verbatimTextOutput("text1"),
+                       verbatimTextOutput("text2")
+               )
+    ),
     
     tabPanel("Info",icon=icon("facebook"),
-             
-             tabItem(
-               tabName = "about",
-               box(width = 12,
-                   h3(icon("group"),"Team Members"),
-                   hr()
+             tabItem(tabName = "about",
+                              box(width = 12,h3(icon("group"),"Team Members"))
                    #title = "Team Members", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
                    
                )
@@ -54,6 +46,6 @@ shinyUI( fluidPage(
              )
     
    
-  )))
+  ))
 
 
