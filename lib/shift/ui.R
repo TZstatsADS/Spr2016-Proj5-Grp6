@@ -36,13 +36,30 @@ police to tell them about his findings. Once the detective opened the phone to d
     tabPanel("Shifting",icon = icon("apple"),
              sidebarPanel(
                textInput("text", "Text:", "I love cryptography."),
-             numericInput("num", "Numeric input",  value = 1,min = 1, max = 25),
+             numericInput("num", "Number of shift",  value = 1,min = 1, max = 25),
              submitButton("Submit")
              ),
              
              mainPanel(verbatimTextOutput("text1"),
                        verbatimTextOutput("text2")
                )
+    ),
+    
+    tabPanel("Mapping",icon = icon("apple"),
+             sidebarPanel(width = 12,
+               textInput("text1", "Text:", "This is the last project."),
+               numericInput("num1", "Number of Iteration",  value = 10,min = 1, max = 100),
+               submitButton("Submit")
+             ),
+             
+             mainPanel(width = 12,
+                       verbatimTextOutput("text3"),
+                       verbatimTextOutput("text4"),
+                       verbatimTextOutput("text5"),
+                       verbatimTextOutput("text6"),
+                       verbatimTextOutput("text7")
+                                          
+             )
     ),
 
     
