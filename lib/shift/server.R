@@ -21,11 +21,18 @@ shinyServer(function(input, output,session) {
   source("stringToWord.R")
   source("inD.R")
   source("vigenerecipher.R")
+  source("ngram.R")
   library("dplyr")
   library("tm")
   
   #Output for shifting############################################################
-  output$text1 <- renderText({ 
+    output$TextFinal<-renderText({
+        firststring<-"the little prince"
+        textlength<-20
+        GetTheWholeText(input$firststring,input$textlength,newmatrix,input$ng)
+    })
+    
+    output$text1 <- renderText({ 
     en = enc(input$text,input$num)
     paste("Your encrypted message is: ", en)
   })
