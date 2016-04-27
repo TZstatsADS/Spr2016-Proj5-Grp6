@@ -10,6 +10,7 @@ rm(myfiles)
 
 #Codes for Mapping
 load("prob.RData")
+load("prob_mat.RData")
 
 #shinyserver
 shinyServer(function(input, output,session) {
@@ -20,11 +21,17 @@ shinyServer(function(input, output,session) {
   source("toSentence.R")
   source("stringToWord.R")
   source("inD.R")
+  source("vigenerecipher.R")
+  source("ngram.R")
   library("dplyr")
   library("tm")
   
   #Output for shifting############################################################
-  output$text1 <- renderText({ 
+    output$TextFinal<-renderText({
+        GetTheWholeText(input$firststring,input$textlength,newmatrix,input$ng)
+    })
+    
+    output$text1 <- renderText({ 
     en = enc(input$text,input$num)
     paste("Your encrypted message is: ", en)
   })
@@ -71,19 +78,19 @@ shinyServer(function(input, output,session) {
     for (i in 1:nchar(decoded)) {
       curletter=substring(decoded,i,i)
       if (curletter %in% toupper(letters)) {
-        logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,
-                                               colnames(prob.mat)==curletter])
+        logprob=logprob+log(prob[rownames(prob_mat)==lastlet_ter,
+                                               colnames(probmat)==curletter])
         lastletter=curletter
       } else {
         if (lastletter!="") {
-          logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+          logprob=logprob+log(prob[rownames(prob_mat)==lastletter,27])
           lastletter=""
         }
       }
     }
     
     if (lastletter!="") {
-      logprob=logprob+log(probability.matrix[rownames(prob.mat)==lastletter,27])
+      logprob=logprob+log(prob[rownames(prob_mat)==lastletter,27])
       lastletter=""
     }
     logprob
@@ -215,6 +222,29 @@ shinyServer(function(input, output,session) {
     paste("Your decoded message is: ", max.decode)
   })
 
+<<<<<<< HEAD
 
 
+=======
+  ########code for vigenere cipher#############
+  output$text8<-renderText({
+    vn <- vigen(input$text2,input$text3)
+    paste("Your encrypted message is: ", vn)
+    
+  })
+  output$text9<-renderText({
+    vnn <- vigen(input$text2,input$text3)
+    vd <- vigen(vnn, input$text3, decrypt = T)
+    paste("Your decrypted message is: ", vd)
+  })
+  
+  ########code for permutation###########
+  output$matrix<-renderTable({
+    matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+  })
+  output$text10<-renderText({
+    m<-matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+    paste(m, collapse = "") 
+  })
+>>>>>>> origin/master
 })

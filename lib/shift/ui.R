@@ -61,17 +61,39 @@ police to tell them about his findings. Once the detective opened the phone to d
                                           
              )
     ),
-
-    
+ 
+    tabPanel("vigenere cipher",icon = icon("apple"),
+             sidebarPanel(
+               textInput("text2", "Text:", "I love cryptography."),
+               textInput("text3", "Key:", "elephant"),
+               submitButton("Submit")
+             ),
+             
+             mainPanel(verbatimTextOutput("text8"),
+                       verbatimTextOutput("text9")
+             )
+    ),
+    tabPanel("permutation",icon = icon("apple"),
+             sidebarPanel(
+               textInput("text4", "Text:", "I love cryptography."),
+               #textInput("text3", "Key:", "elephant"),
+               submitButton("Submit")
+             ),
+             
+             mainPanel(tableOutput("matrix"),
+                       verbatimTextOutput("text10")
+             )
+    ),
     tabPanel("Ngram",icon = icon("apple"),
              sidebarPanel(
                  
-                 textInput("firststring", label = h6("Text input"), 
-                           value = "a bad dream"),
+                 textInput("firststring", label = h6("Text input") ,
+                           value="the little prince"),
                  numericInput("textlength", label = h6("Text input"), 
-                           value = 20),
-                 numericInput("ng", label = h6("Text input"), 
-                           value = 4)
+                           value="30"),
+                 numericInput("ng", label = h6("Text input"),
+                          value="4"),
+                 submitButton("Submit")
                  ),
              mainPanel(
                  textOutput("TextFinal"
