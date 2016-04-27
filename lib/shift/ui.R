@@ -3,7 +3,7 @@ library(shinydashboard)
 
 shinyUI( fluidPage(
   navbarPage(
-    "Team 8 Project 5",
+    includeCSS("style.css"),
     tabPanel("Crypotography",icon = icon("unlock"),
              box(width = 6,
                  img(src="murder.jpg", width = 400) ),
