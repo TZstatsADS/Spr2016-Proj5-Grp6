@@ -11,6 +11,7 @@ rm(myfiles)
 #Codes for Mapping
 load("prob.RData")
 load("prob_mat.RData")
+prob_mat <- prob.mat
 
 #shinyserver
 shinyServer(function(input, output,session) {
@@ -78,8 +79,8 @@ shinyServer(function(input, output,session) {
     for (i in 1:nchar(decoded)) {
       curletter=substring(decoded,i,i)
       if (curletter %in% toupper(letters)) {
-        logprob=logprob+log(prob[rownames(prob_mat)==lastlet_ter,
-                                               colnames(probmat)==curletter])
+        logprob=logprob+log(prob[rownames(prob_mat)==lastletter,
+                                               colnames(prob_mat)==curletter])
         lastletter=curletter
       } else {
         if (lastletter!="") {
@@ -104,8 +105,13 @@ shinyServer(function(input, output,session) {
   
   mapping <- sample(toupper(letters)) 
   i=2 
+  
   output$text4 <- renderText({ 
     coded <- decode(sample(toupper(letters)),input$text1)
+    cur.decode <- decode(mapping,coded)
+    cur.loglike <- log.prob(mapping,cur.decode)
+    max.loglike <- cur.loglike
+    max.decode <- cur.decode
     while (i<=input$num1) {
       proposal <- sample(1:26,2) # select 2 letters to switch
       prop.mapping=mapping
@@ -129,7 +135,6 @@ shinyServer(function(input, output,session) {
         i=i+1
       }
     }
-    cur.decode <- decode(mapping,coded)
     paste("Your decrypted message is: ", cur.decode)
       #    "Your decoded message is: ", max.decode)
     
@@ -137,6 +142,10 @@ shinyServer(function(input, output,session) {
   
   output$text5 <- renderText({ 
     coded <- decode(sample(toupper(letters)),input$text1)
+    cur.decode <- decode(mapping,coded)
+    cur.loglike <- log.prob(mapping,cur.decode)
+    max.loglike <- cur.loglike
+    max.decode <- cur.decode
     while (i<=input$num1) {
       proposal <- sample(1:26,2) # select 2 letters to switch
       prop.mapping=mapping
@@ -160,12 +169,15 @@ shinyServer(function(input, output,session) {
         i=i+1
       }
     }
-    cur.loglike <- log.prob(mapping,cur.decode)
     paste("Your log-likelihood is: ", cur.loglike)
   })
   
   output$text6 <- renderText({ 
     coded <- decode(sample(toupper(letters)),input$text1)
+    cur.decode <- decode(mapping,coded)
+    cur.loglike <- log.prob(mapping,cur.decode)
+    max.loglike <- cur.loglike
+    max.decode <- cur.decode
     while (i<=input$num1) {
       proposal <- sample(1:26,2) # select 2 letters to switch
       prop.mapping=mapping
@@ -189,12 +201,15 @@ shinyServer(function(input, output,session) {
         i=i+1
       }
     }
-    max.loglike <- cur.loglike
     paste("Your maximum log-likelihood is: ", max.loglike)
   })
   
   output$text7 <- renderText({ 
     coded <- decode(sample(toupper(letters)),input$text1)
+    cur.decode <- decode(mapping,coded)
+    cur.loglike <- log.prob(mapping,cur.decode)
+    max.loglike <- cur.loglike
+    max.decode <- cur.decode
     while (i<=input$num1) {
       proposal <- sample(1:26,2) # select 2 letters to switch
       prop.mapping=mapping
@@ -218,7 +233,6 @@ shinyServer(function(input, output,session) {
         i=i+1
       }
     }
-    max.decode <- cur.decode
     paste("Your decoded message is: ", max.decode)
   })
 
@@ -240,10 +254,12 @@ shinyServer(function(input, output,session) {
   
   ########code for permutation###########
   output$matrix<-renderTable({
-    matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+      tt<-input$text4
+    matrix(c(substring(tt, 1:nchar(tt), 1:nchar(tt)),rep('*',25-nchar(tt))),5,5,byrow = T)
   })
   output$text10<-renderText({
-    m<-matrix(substring("who is that cute girl?XXX", 1:25, 1:25),5,5,byrow = T)
+      tt<-input$text4
+    m<-matrix(c(substring(tt, 1:nchar(tt), 1:nchar(tt)),rep('*',25-nchar(tt))),5,5,byrow = T)
     paste(m, collapse = "") 
   })
 >>>>>>> origin/master
