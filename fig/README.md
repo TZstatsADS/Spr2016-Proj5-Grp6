@@ -1,4 +1,4 @@
-# Project: Cats vs Dogs
+# Project: Cipher Solving
 
 ### Figs folder
 
