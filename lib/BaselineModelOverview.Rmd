@@ -7,12 +7,14 @@ output: html_document
 #Baseline Cipher Solving 
   
 ##Comparison Text
-Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
+Right now, it is the book, `Beauty And The Best`.
 
 ```{r}
-#Input a baseline text fille to decode
-reference <- readLines("C:\\Users\\NMLJ\\Documents\\GitHub\\finalfroject-p5-team6\\data\\warandpeace.txt")
-reference <- readLines("warandpeace.txt")
+#Input a baseline text file to decode
+
+file.choose()
+reference <- readLines("C:\\Users\\NMLJ\\Desktop\\finalproject-p5-team6\\data\\beautbst.txt")
+reference <- readLines("beautbst.txt")
 
 #Translate Characters into character vectors
 reference <- toupper(reference) 
@@ -112,10 +114,9 @@ log.prob <- function(mapping,decoded) {
 ```{r}
 #SRS of letters scramble
 ##Correct text (Input as character spring)
-correctTxt <- "Hello Project Five Team Six! I Hope this code works."
+correctTxt <- "Hello Project Five Team Six! I Hope this code works. I do not think it will, but it might be good to confuse the kidnappers."
 
-#WANT TO CHANGE THIS METHOD 
-#Use Simple Sub and Permutation Method to improve accuracy
+
 coded <- decode(sample(toupper(letters)),correctTxt) # randomly scramble the text
 coded
 ```
