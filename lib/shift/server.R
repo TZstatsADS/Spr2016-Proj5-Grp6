@@ -23,14 +23,14 @@ shinyServer(function(input, output,session) {
   source("stringToWord.R")
   source("inD.R")
   source("vigenerecipher.R")
-  source("ngram.R")
+  #source("ngram.R")
   library("dplyr")
   library("tm")
   
   #Output for shifting############################################################
-    output$TextFinal<-renderText({
-        GetTheWholeText(input$firststring,input$textlength,newmatrix,input$ng)
-    })
+    # output$TextFinal<-renderText({
+    #     GetTheWholeText(input$firststring,input$textlength,newmatrix,input$ng)
+    # })
     
     output$text1 <- renderText({ 
     en = enc(input$text,input$num)

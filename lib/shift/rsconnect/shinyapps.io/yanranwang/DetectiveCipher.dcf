@@ -2,8 +2,8 @@ name: DetectiveCipher
 account: yanranwang
 server: shinyapps.io
 appId: 98393
-bundleId: 435395
+bundleId: 435417
 url: https://yanranwang.shinyapps.io/DetectiveCipher/
-when: 1461723011.3318
+when: 1461724522.03035
 asMultiple: FALSE
 asStatic: FALSE
