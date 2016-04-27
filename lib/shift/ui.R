@@ -11,12 +11,12 @@ shinyUI( fluidPage(
                helpText("Fellow classmates and friends, a crime has been committed! Yuting has been kidnapped and is being held for ransom! But, since we all are
                           college students, none of us can afford to pay the criminals to get her back. If we want to get our course grades (and get Yuting back safely), we need to solve this crime!
                         Will you join the Team Six Detective Agency in solving this mystery? We need six volunteers!"),
-               img(src="detec.jpg", width=500),
+               img(src="murder.jpg", width = 400),
                helpText("Thank you for your participation! Now that we have our full detective team and you all have been given clues, we need to give some background information and knowledge so we can prepare to solve this crime."),
                helpText("Will we be able to save Yuting in time?!")
                   ),
             mainPanel(
-              img(src="murder.jpg", width = 400)
+              
             )),
     
     
@@ -126,11 +126,11 @@ shinyUI( fluidPage(
     
     tabPanel("Conclusion",icon=icon("certificate"),
              sidebarPanel(
-               img(src="detective.jpg", width=500),
-               br(),
-               helpText("Yuting has now been found, and she is so grateful she is going to give everyone an A in the course! Now you can include yourselves in the ranks of the ther great detectives!")
+               helpText("Yuting has now been found, and she is so grateful she is going to give everyone an A in the course! Now you can include yourselves in the ranks of the the great detectives!")
              ),
              mainPanel(
+               img(src="detective.jpg", width=900),
+               br(),
                includeMarkdown("conclude.md")
              )
     )
