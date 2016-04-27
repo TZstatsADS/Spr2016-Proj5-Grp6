@@ -6,8 +6,8 @@ output: html_document
 ---
 #Baseline Cipher Solving 
   
-  ##Comparison Text
-  Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
+##Comparison Text
+Right now, it is the book, `War and Peace`, but maybe dictionary will be better? I also uploaded beauty and the beast to try as an alternative/shorter text.
 
 ```{r}
 #Input a baseline text fille to decode
@@ -168,7 +168,5 @@ max.loglike
 
 #Max LL of Decode
 max.decode
-
-#
-
 ```
+
