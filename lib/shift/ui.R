@@ -1,5 +1,7 @@
 library(shiny)
 library(shinydashboard)
+library("dplyr")
+library("tm")
 
 shinyUI( fluidPage(
   navbarPage(
@@ -13,6 +15,12 @@ as Mark Oswalt, who recently was married. The police went to the crime scene and
 reported the death as a suicide. Later that day, after the police left, a private detective, 
 hired by the victim's friend who thought it was a murder, searched the crime scene and 
 found a note the police missed. It read: "),
+                 tags$head(tags$style("text1{color: red;
+                                 font-size: 20px;
+                                      font-style: italic;
+                                      }"
+                         )
+                 ),
                  helpText("4,3: 8,1:_: 9,1: 2,1: 7,4:_: 6,1:9,3:_: 9,1: 4,3: 3,3: 3,2: !"),
                  helpText("The detective took out his cell phone and started dialing the
 police to tell them about his findings. Once the detective opened the phone to dial, he 
@@ -62,7 +70,7 @@ police to tell them about his findings. Once the detective opened the phone to d
              )
     ),
  
-    tabPanel("vigenere cipher",icon = icon("apple"),
+    tabPanel("vigenere cipher",icon = icon("fa fa-paw"),
              sidebarPanel(
                textInput("text2", "Text:", "I love cryptography."),
                textInput("text3", "Key:", "elephant"),
@@ -73,7 +81,7 @@ police to tell them about his findings. Once the detective opened the phone to d
                        verbatimTextOutput("text9")
              )
     ),
-    tabPanel("permutation",icon = icon("apple"),
+    tabPanel("permutation",icon = icon("fa fa-hand-scissors-o"),
              sidebarPanel(
                textInput("text4", "Text:", "I love cryptography."),
                #textInput("text3", "Key:", "elephant"),
@@ -84,7 +92,7 @@ police to tell them about his findings. Once the detective opened the phone to d
                        verbatimTextOutput("text10")
              )
     ),
-    tabPanel("Ngram",icon = icon("apple"),
+    tabPanel("Ngram",icon = icon("fa fa-coffee"),
              sidebarPanel(
                  
                  textInput("firststring", label = h6("Text input") ,
@@ -96,8 +104,7 @@ police to tell them about his findings. Once the detective opened the phone to d
                  submitButton("Submit")
                  ),
              mainPanel(
-                 textOutput("TextFinal"
-                 )
+                 #verbatimTextOutput("TextFinal")
                  #tabsetPanel(type = "tabs", 
                  #           tabPanel("Plot", plotOutput("plot")), 
                  #            tabPanel("Summary", verbatimTextOutput("summary")), 
