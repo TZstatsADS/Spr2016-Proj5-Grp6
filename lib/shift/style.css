@@ -14,18 +14,24 @@ input[type="number"] {
 
 /* Customize fonts */
 body {
-  background-image: url("pic.jpg"); 
+  background-image: url("crime.jpg");
   background-position: left top;
   background-color : #000000; 
-  background-attachment: fixed
 }
 
 label, input, button, select { 
   font-family: 'Helvetica Neue', Helvetica;
   font-weight: 200;
+  color: black;
 }
-h1, h2, h3, h4 { font-weight: 400; }
+h1, h2, h3, h4, p { 
+font-weight: 400;
+color: white; }
 
+body {
+font-size: 16px;
+    color: white;
+}
 #controls {
   /* Appearance */
   background-color: white;
