@@ -11,7 +11,7 @@ shinyUI( fluidPage(
                helpText("Fellow classmates and friends, a crime has been committed! Yuting has been kidnapped and is being held for ransom! But, since we all are
                           college students, none of us can afford to pay the criminals to get her back. If we want to get our course grades (and get Yuting back safely), we need to solve this crime!
                         Will you join the Team Six Detective Agency in solving this mystery? We need four volunteers!"),
-               img(src="detective.jpg", width=500),
+               img(src="detec.jpg", width=500),
                helpText("Thank you for your participation! Now that we have our full detective team and you all have been given clues, we need to give some background information and knowledge so we can prepare to solve this crime."),
                helpText("Will we be able to save Yuting in time?!")
                   ),
@@ -39,8 +39,6 @@ shinyUI( fluidPage(
              
              mainPanel(verbatimTextOutput("text1"),
                        br(),
-                       img(src="detec.jpg", width=400),
-                       br(),
                        helpText("Thank you, good volunteer for sending us this decoded message for the first clue. When we run this through our Shift Cipher decoding algorithm, we produce the following:"),
                        verbatimTextOutput("text2")
                )
@@ -49,29 +47,47 @@ shinyUI( fluidPage(
  
     tabPanel("Vigenere Cipher",icon = icon("sliders"),
              sidebarPanel(
-               textInput("text2", "Text:", "I love cryptography."),
-               textInput("text3", "Key:", "elephant"),
+               helpText("Now, we know where Yuting is, but how many kidnappers are there?"),
+               br(),
+               helpText("To be extra safe, we will use the Vignere method to encode and decode, with the same communication procedure as last time"),
+               br(),
+               textInput("text2", "Text:", "How many bad guys do the police need to fight?"),
+               br(),
+               textInput("text3", "Key:", "What Key should we use?"),
                submitButton("Submit")
              ),
              
-             mainPanel(verbatimTextOutput("text8"),
-                       verbatimTextOutput("text9")
+             mainPanel(
+               helpText("This is the encrypted message we sent over the the police!"),
+               verbatimTextOutput("text8"),
+               br(),
+               helpText("Here is what they decoded! The message was sent successfully!"),
+               br(),
+               verbatimTextOutput("text9")
              )
     ),
     tabPanel("Permutation",icon = icon("random"),
              sidebarPanel(
-               textInput("text4", "Text:", "I love cryptography."),
+               helpText("Now finally, can the person with clue 3 tell us if Yuting gave us any other messages? Is she in need of medical help?"),
+               br(),
+               textInput("text4", "Text:", "6"),
                #textInput("text3", "Key:", "elephant"),
                submitButton("Submit")
              ),
              
-             mainPanel(tableOutput("matrix"),
+             mainPanel(
+               helpText("Here is the matrix visual of the algorithm we sent to the police!"),
+               br(),
+               tableOutput("matrix"),
+               br(),
+               helpText("And here are the decoded results so the police know what else she needs"),
                        verbatimTextOutput("text10")
              )
     ),
     tabPanel("N-Gram Comparison",icon = icon("check"),
              sidebarPanel(
-                 
+                 helpText("Now finally, since this is a stressful situation, we need to see who else we should inform about Yuting's kidnapping. What does clue four say?"),
+                 br(),
                  textInput("firststring", label = h6("Text input") ,
                            value="the little prince"),
                  numericInput("textlength", label = h6("Text input"), 
@@ -92,8 +108,9 @@ shinyUI( fluidPage(
     
     tabPanel("Binary Probability",icon = icon("balance-scale"),
              sidebarPanel(width = 12,
-                          textInput("text1", "Text:", "This is the last project."),
-                          numericInput("num1", "Number of Iteration",  value = 10,min = 1, max = 100),
+                          helpText("While the police are on their way, we should take a side-step"),
+                          textInput("text1", "Text:", "I was hoping this would work but for now it should just confuse the kidnappers which is also good"),
+                          numericInput("num1", "Number of Iterations",  value = 1 ,min = 1, max = 100),
                           submitButton("Submit")
              ),
              
@@ -108,7 +125,13 @@ shinyUI( fluidPage(
     ),
     
     tabPanel("Conclusion",icon=icon("certificate"),
-             mainPanel(includeMarkdown("conclude.md")
+             sidebarPanel(
+               img(src="detective.jpg", width=500),
+               br(),
+               helpText("Yuting has now been found, and she is so grateful she is going to give everyone an A in the course! Now you can include yourselves in the ranks of the ther great detectives!")
+             ),
+             mainPanel(
+               includeMarkdown("conclude.md")
              )
     )
                )

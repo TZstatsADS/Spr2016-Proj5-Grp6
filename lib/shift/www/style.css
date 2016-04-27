@@ -22,8 +22,11 @@ body {
 label, input, button, select { 
   font-family: 'Helvetica Neue', Helvetica;
   font-weight: 200;
+  color: red;
 }
-h1, h2, h3, h4 { font-weight: 400; }
+h1, h2, h3, h4, p { 
+font-weight: 400;
+color: red; }
 
 #controls {
   /* Appearance */
