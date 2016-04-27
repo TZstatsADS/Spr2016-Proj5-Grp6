@@ -6,71 +6,48 @@ library("tm")
 shinyUI( fluidPage(
   navbarPage(
     includeCSS("style.css"),
-    tabPanel("Crypotography",icon = icon("unlock"),
-             box(width = 6,
-                 img(src="murder.jpg", width = 400) ),
-             box(width = 6,
-                 helpText("There was a death on Treebark Ln. The victim was identified 
-as Mark Oswalt, who recently was married. The police went to the crime scene and they 
-reported the death as a suicide. Later that day, after the police left, a private detective, 
-hired by the victim's friend who thought it was a murder, searched the crime scene and 
-found a note the police missed. It read: "),
-                 tags$head(tags$style("text1{color: red;
-                                 font-size: 20px;
-                                      font-style: italic;
-                                      }"
-                         )
-                 ),
-                 helpText("4,3: 8,1:_: 9,1: 2,1: 7,4:_: 6,1:9,3:_: 9,1: 4,3: 3,3: 3,2: !"),
-                 helpText("The detective took out his cell phone and started dialing the
-police to tell them about his findings. Once the detective opened the phone to dial, he 
-                          immediately screamed out, 'I SOLVED IT!'"),
-                 br(),
-                 helpText("Who was the murderer and how did the detective find out?")
-                        
+    tabPanel("The Crime",icon = icon("unlock"),
+             sidebarPanel(
+               helpText("Fellow classmates and friends, a crime has been committed! Yuting has been kidnapped and is being held for ransom! But, since we all are
+                          college students, none of us can afford to pay the criminals to get her back. If we want to get our course grades (and get Yuting back safely), we need to solve this crime!
+                        Will you join the Team Six Detective Agency in solving this mystery? We need four volunteers!"),
+               img(src="detective.jpg", width=500),
+               helpText("Thank you for your participation! Now that we have our full detective team and you all have been given clues, we need to give some background information and knowledge so we can prepare to solve this crime."),
+               helpText("Will we be able to save Yuting in time?!")
+                  ),
+            mainPanel(
+              img(src="murder.jpg", width = 400)
+            )),
+    
+    
+    tabPanel("Background Information",icon=icon("book"),
+             mainPanel(includeMarkdown("background.md")
                  )
-            ),
-    
-    
-    tabPanel("Exploratory Analysis",icon=icon("line-chart"),
-             sidebarLayout(position="left",
-                           sidebarPanel(width = 3),
-                           
-                           
-                           mainPanel(width = 9)
-                           )
              ),
     
-    tabPanel("Shifting",icon = icon("apple"),
+    tabPanel("Shift Cipher",icon = icon("level-up"),
              sidebarPanel(
-               textInput("text", "Text:", "I love cryptography."),
-             numericInput("num", "Number of shift",  value = 1,min = 1, max = 25),
+               helpText("What we need to do is send clue 1 to the police without the kidnappers knowing what we are saying"),
+               br(),
+               helpText("Can the person who has clue one read the clue out loud, and tell us what the message to encode to the police is?"),
+               br(),
+               helpText("Don't worry though, we will show you also the results of decoding a shift cipher with our algorithm too, to make sure the police can decipher it properly!"),
+               textInput("text", "Text:", "What is clue one?!"),
+             numericInput("num", "What is the shift value?",  value = 1,min = 1, max = 25),
              submitButton("Submit")
              ),
              
              mainPanel(verbatimTextOutput("text1"),
+                       br(),
+                       img(src="detec.jpg", width=400),
+                       br(),
+                       helpText("Thank you, good volunteer for sending us this decoded message for the first clue. When we run this through our Shift Cipher decoding algorithm, we produce the following:"),
                        verbatimTextOutput("text2")
                )
     ),
     
-    tabPanel("Mapping",icon = icon("apple"),
-             sidebarPanel(width = 12,
-               textInput("text1", "Text:", "This is the last project."),
-               numericInput("num1", "Number of Iteration",  value = 10,min = 1, max = 100),
-               submitButton("Submit")
-             ),
-             
-             mainPanel(width = 12,
-                       verbatimTextOutput("text3"),
-                       verbatimTextOutput("text4"),
-                       verbatimTextOutput("text5"),
-                       verbatimTextOutput("text6"),
-                       verbatimTextOutput("text7")
-                                          
-             )
-    ),
  
-    tabPanel("vigenere cipher",icon = icon("fa fa-paw"),
+    tabPanel("Vigenere Cipher",icon = icon("sliders"),
              sidebarPanel(
                textInput("text2", "Text:", "I love cryptography."),
                textInput("text3", "Key:", "elephant"),
@@ -81,7 +58,7 @@ police to tell them about his findings. Once the detective opened the phone to d
                        verbatimTextOutput("text9")
              )
     ),
-    tabPanel("permutation",icon = icon("fa fa-hand-scissors-o"),
+    tabPanel("Permutation",icon = icon("random"),
              sidebarPanel(
                textInput("text4", "Text:", "I love cryptography."),
                #textInput("text3", "Key:", "elephant"),
@@ -92,7 +69,7 @@ police to tell them about his findings. Once the detective opened the phone to d
                        verbatimTextOutput("text10")
              )
     ),
-    tabPanel("Ngram",icon = icon("fa fa-coffee"),
+    tabPanel("N-Gram Comparison",icon = icon("check"),
              sidebarPanel(
                  
                  textInput("firststring", label = h6("Text input") ,
@@ -113,22 +90,31 @@ police to tell them about his findings. Once the detective opened the phone to d
              
     ),
     
+    tabPanel("Binary Probability",icon = icon("balance-scale"),
+             sidebarPanel(width = 12,
+                          textInput("text1", "Text:", "This is the last project."),
+                          numericInput("num1", "Number of Iteration",  value = 10,min = 1, max = 100),
+                          submitButton("Submit")
+             ),
+             
+             mainPanel(width = 12,
+                       verbatimTextOutput("text3"),
+                       verbatimTextOutput("text4"),
+                       verbatimTextOutput("text5"),
+                       verbatimTextOutput("text6"),
+                       verbatimTextOutput("text7")
+                       
+             )
+    ),
     
-    tabPanel("Info",icon=icon("facebook"),
-             tabItem(tabName = "about",
-                              box(width = 12,h3(icon("group"),"Team Members"),
-                                  br(),
-                                  h5("Nicole Marie Lapointe Jameson: nml2145@columbia.edu"),
-                                  h5("Yanran Wang: yw2758@columbia.edu"),
-                                  h5("Zehao Wang: zw2323@columbia.edu"),
-                                  h5("Yanyu Zheng: yz2690@columbia.edu"),
-                                  h5("Jadie Zuo: xz2467@columbia.edu"))
-                   
-               )
+    tabPanel("Conclusion",icon=icon("certificate"),
+             mainPanel(includeMarkdown("conclude.md")
+             )
+    )
                )
              )
     
    
-  ))
+  )
 
 
