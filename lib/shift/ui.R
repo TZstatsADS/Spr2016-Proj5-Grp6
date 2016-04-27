@@ -10,7 +10,7 @@ shinyUI( fluidPage(
              sidebarPanel(
                helpText("Fellow classmates and friends, a crime has been committed! Yuting has been kidnapped and is being held for ransom! But, since we all are
                           college students, none of us can afford to pay the criminals to get her back. If we want to get our course grades (and get Yuting back safely), we need to solve this crime!
-                        Will you join the Team Six Detective Agency in solving this mystery? We need four volunteers!"),
+                        Will you join the Team Six Detective Agency in solving this mystery? We need six volunteers!"),
                img(src="detec.jpg", width=500),
                helpText("Thank you for your participation! Now that we have our full detective team and you all have been given clues, we need to give some background information and knowledge so we can prepare to solve this crime."),
                helpText("Will we be able to save Yuting in time?!")
@@ -76,12 +76,12 @@ shinyUI( fluidPage(
              ),
              
              mainPanel(
-               helpText("Here is the matrix visual of the algorithm we sent to the police!"),
+               helpText("And here are the encoded results that were sent to the police"),
                br(),
-               tableOutput("matrix"),
+                       verbatimTextOutput("text10"),
+               helpText("But this is the decoded visual matrix produced! Much clearer."),
                br(),
-               helpText("And here are the decoded results so the police know what else she needs"),
-                       verbatimTextOutput("text10")
+               tableOutput("matrix")
              )
     ),
     tabPanel("N-Gram Comparison",icon = icon("check"),
