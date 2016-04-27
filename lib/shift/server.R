@@ -236,10 +236,9 @@ shinyServer(function(input, output,session) {
     paste("Your decoded message is: ", max.decode)
   })
 
-<<<<<<< HEAD
 
 
-=======
+
   ########code for vigenere cipher#############
   output$text8<-renderText({
     vn <- vigen(input$text2,input$text3)
@@ -262,5 +261,5 @@ shinyServer(function(input, output,session) {
     m<-matrix(c(substring(tt, 1:nchar(tt), 1:nchar(tt)),rep('*',25-nchar(tt))),5,5,byrow = T)
     paste(m, collapse = "") 
   })
->>>>>>> origin/master
+
 })
