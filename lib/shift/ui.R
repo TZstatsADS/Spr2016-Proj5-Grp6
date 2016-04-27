@@ -91,13 +91,13 @@ shinyUI( fluidPage(
                  textInput("firststring", label = h6("Text input") ,
                            value="the little prince"),
                  numericInput("textlength", label = h6("Text input"), 
-                           value="30"),
+                           value="12"),
                  numericInput("ng", label = h6("Text input"),
                           value="4"),
                  submitButton("Submit")
                  ),
              mainPanel(
-                 #verbatimTextOutput("TextFinal")
+                 verbatimTextOutput("TextFinal")
                  #tabsetPanel(type = "tabs", 
                  #           tabPanel("Plot", plotOutput("plot")), 
                  #            tabPanel("Summary", verbatimTextOutput("summary")), 
