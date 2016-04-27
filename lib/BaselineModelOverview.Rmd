@@ -12,6 +12,7 @@ Right now, it is the book, `War and Peace`, but maybe dictionary will be better?
 ```{r}
 #Input a baseline text fille to decode
 reference <- readLines("C:\\Users\\NMLJ\\Documents\\GitHub\\finalfroject-p5-team6\\data\\warandpeace.txt")
+reference <- readLines("warandpeace.txt")
 
 #Translate Characters into character vectors
 reference <- toupper(reference) 
