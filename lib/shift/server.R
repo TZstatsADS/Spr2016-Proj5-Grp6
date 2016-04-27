@@ -104,7 +104,7 @@ shinyServer(function(input, output,session) {
   br()
   
   mapping <- sample(toupper(letters)) 
-  i=2 
+  i=3
   
   output$text4 <- renderText({ 
     coded <- decode(sample(toupper(letters)),input$text1)

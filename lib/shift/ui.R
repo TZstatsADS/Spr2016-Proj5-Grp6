@@ -109,7 +109,7 @@ shinyUI( fluidPage(
     tabPanel("Binary Probability",icon = icon("balance-scale"),
              sidebarPanel(width = 12,
                           helpText("While the police are on their way, we should take a side-step"),
-                          textInput("text1", "Text:", "I was hoping this would work but for now it should just confuse the kidnappers which is also good"),
+                          textInput("text1", "Text:", "I was hoping this would work but for now it should just confuse the kidnappers which is also good. However, this idea with future development, should prove very promising. "),
                           numericInput("num1", "Number of Iterations",  value = 1 ,min = 1, max = 100),
                           submitButton("Submit")
              ),
